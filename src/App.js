@@ -1,23 +1,22 @@
 import logo from './logo.svg';
 import './App.css';
+import { useEffect, useState } from 'react';
+import ZipCodeForm from './ZipCodeForm'
+import WeatherViewer from './WeatherViewer'
+
+
+
 
 function App() {
+  const [weather, setWeather]= useState(null)
+  const [forcast, setForcast]= useState(null)
+  const [hasZip, setHasZip]= useState(false)
+  
+  
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App" style={{display:"flex", flexDirection: "column"}}>
+      {hasZip? <WeatherViewer weather={weather} forcast={forcast} />:<ZipCodeForm setHasZip= {setHasZip} setWeather={setWeather} setForcast={setForcast}/>}
     </div>
   );
 }
