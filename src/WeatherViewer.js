@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import Button from '@material-ui/core/Button';
 import DailyWeatherCard from './DailyWeatherCard'
 import HourlyWeatherCard from './HourlyWeatherCard'
+import { FaSun, FaCloudRain, FaCloud } from "react-icons/fa";
 
 function WeatherViewer(props){
     const [isDaily, setIsDaily]= useState(true)
@@ -40,7 +41,7 @@ function WeatherViewer(props){
        <div style ={{flex:1}}>
            <h1>Weather in {props.weather.name}</h1>
             <h2> The current temerature is {props.weather.main.temp} F</h2>
-            <h2> Sky Condition: {props.weather.weather[0].main}</h2>
+            <h2> Sky Condition: {props.weather.weather[0].main} {(props.weather.weather[0].main)=="Clear"? <FaSun style={{color:"yellow"}}/>: (props.weather.weather[0].main)=="Clouds"? <FaCloud style={{color:"white"}}/>: (props.weather.weather[0].main)=="Rain"? <FaCloudRain style={{color:"blue"}}/>:"!"}</h2>
             <Button onClick={toggleDaily} variant="contained"> Toggle Forcast</Button>
 
             <br/>

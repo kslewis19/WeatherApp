@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import { useEffect, useState } from 'react';
 import Button from '@material-ui/core/Button';
-import { TextField } from '@material-ui/core';
+import { TextField, FormLabel } from '@material-ui/core';
 
 const API_KEY= process.env.REACT_APP_api_key
 
@@ -64,6 +64,8 @@ const handleSubmit = (event)=>{
 
 return(
     <div>
+      <h1>Welcome to the Weather App!</h1>
+        <h2> Please enter your zip code bellow:</h2>
         <form method="post" onSubmit={handleSubmit}>
           <TextField name='value' value={zip} onChange={(event)=>{setZip(event.target.value)}} placeholder={'enter zip code'} >
           </TextField>

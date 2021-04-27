@@ -1,4 +1,4 @@
-
+import { FaSun, FaCloudRain, FaCloud } from "react-icons/fa";
 
 function DailyWeatherCard(props){
 
@@ -10,7 +10,11 @@ if (props.index!=0){
             <p>Temperature: {props.day.temp.day}</p>
             <p>High: {props.day.temp.max}</p>
             <p>Low: {props.day.temp.min}</p>
-            <p>Skys: {(props.day.weather[0].main)}</p>
+            
+            
+            
+            
+            <p>Skys: {(props.day.weather[0].main)} {(props.day.weather[0].main)=="Clear"? <FaSun style={{color:"yellow"}}/>: (props.day.weather[0].main)=="Clouds"? <FaCloud style={{color:"white"}}/>: (props.day.weather[0].main)=="Rain"? <FaCloudRain style={{color:"blue"}}/>:"!"}</p>
             
         
         </div>
