@@ -3,13 +3,31 @@ import logo from './logo.svg';
 import './App.css';
 import { useEffect, useState } from 'react';
 import Button from '@material-ui/core/Button';
+import DailyWeatherCard from './DailyWeatherCard'
+import HourlyWeatherCard from './HourlyWeatherCard'
 
 function WeatherViewer(props){
     const [isDaily, setIsDaily]= useState(true)
 
 
-    const daily= <div> daily weather</div>
-    const hourly= <div>hourly weather</div>
+    const daily= <div style={{display:"flex",flex:1, minHeight: "100%" , flexDirection: "column", alignItems: "center", justifyContent: "space-between"}}> 
+    Daily Weather
+
+    {props.forcast.daily.map((daily, key)=>(
+        <DailyWeatherCard day={daily} index={key}/>
+        
+    ))}
+
+    </div>
+    const hourly= <div style={{display:"flex",flex:1, minHeight: "100%" , flexDirection: "column", alignItems: "center", justifyContent: "space-between"}}> 
+    Hourly Weather
+
+    {props.forcast.hourly.map((hourly, key)=>(
+        <HourlyWeatherCard hour={hourly} index={key}/>
+        
+    ))}
+
+    </div>
 
     const toggleDaily = ()=>{
         setIsDaily(!isDaily)
@@ -22,8 +40,9 @@ function WeatherViewer(props){
        <div style ={{flex:1}}>
            <h1>Weather in {props.weather.name}</h1>
             <h2> The current temerature is {props.weather.main.temp} F</h2>
-            <h2> Sky Condition {props.weather.weather[0].main}</h2>
+            <h2> Sky Condition: {props.weather.weather[0].main}</h2>
             <Button onClick={toggleDaily} variant="contained"> Toggle Forcast</Button>
+
             <br/>
            {isDaily? daily: hourly}
            
